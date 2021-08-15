@@ -1,0 +1,2 @@
+# gielda
+Projekt giełdy
