@@ -28,5 +28,13 @@ class EntitiesTableSeeder extends Seeder
             'price' => 500,
             'total' => 500
         ]);
+        DB::table('entities')->insert([
+            'id' => 0,
+            'name' => 'Giełda',
+            'owner' => 'A1217',
+            'type' => 'SYS',
+            'price' => 0,
+            'total' => 0
+        ]);
     }
 }
