@@ -7,17 +7,30 @@ use Illuminate\Http\Request;
 
 class EntityController extends Controller
 {
+
+    private function getBasicQuery()
+    {
+        return Entity::where('id', '>', '-1');
+    }
+
+    private function applyFilters($query, $request)
+    {
+        if ($request->has('type')) {
+            $query = $query->where('type', $request->get('type'));
+        }
+        return $query;
+    }
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function index()
+    public function index(Request $request)
     {
      
-     $products = Entity::all();
+     $entities = $this->applyFilters($this->getBasicQuery(), $request)->get();
 
-     return response()->json($products);
+     return response()->json($entities);
 
     }
 }
